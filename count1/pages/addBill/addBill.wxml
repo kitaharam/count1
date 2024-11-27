@@ -1,0 +1,68 @@
+<!--pages/addBill/addBill.wxml-->
+<!-- 添加账单页面 -->
+<view class="page-container">
+  <view class="content-container">
+    <!-- 金额输入区域 -->
+    <view class="amount-section">
+      <view class="amount-label">金额</view>
+      <view class="amount-input-wrapper">
+        <text class="currency">¥</text>
+        <input class="amount-input" type="digit" value="{{amount}}" bindinput="onAmountInput" placeholder="0.00"/>
+      </view>
+    </view>
+
+    <!-- 标签选择区域 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">支出类型</text>
+        <view class="auto-tag" bindtap="toggleAutoTag">
+          <view class="auto-tag-content {{isAutoTagEnabled ? 'enabled' : ''}}">
+            <image class="auto-tag-icon" src="/images/ai.png" mode="aspectFit"></image>
+            <text>AI 智能识别</text>
+            <view class="auto-tag-status">{{isAutoTagEnabled ? '已开启' : '已关闭'}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="tags-grid">
+        <view 
+          wx:for="{{tags}}" 
+          wx:key="*this" 
+          class="tag-item {{selectedTag === item ? 'selected' : ''}}"
+          bindtap="selectTag"
+          data-tag="{{item}}"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <!-- 日期和备注区域 -->
+    <view class="section">
+      <view class="input-row">
+        <text class="input-label">日期</text>
+        <picker mode="date" value="{{date}}" bindchange="onDateChange">
+          <view class="picker-value">{{date}}</view>
+        </picker>
+      </view>
+      <view class="divider"></view>
+      <view class="note-section">
+        <text class="input-label">备注</text>
+        <view class="note-wrapper">
+          <textarea 
+            class="note-input" 
+            value="{{note}}" 
+            bindinput="onNoteInput" 
+            placeholder="添加备注（选填），智能识别将根据备注自动选择支出类型"
+            placeholder-class="placeholder"
+            maxlength="200"
+            auto-height
+          />
+          <view class="note-counter">{{note.length}}/200</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 保存按钮 -->
+  <view class="submit-btn" bindtap="submitBill">保存</view>
+</view>

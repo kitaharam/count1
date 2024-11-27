@@ -1,0 +1,96 @@
+<!--pages/user/user.wxml-->
+<!-- 用户中心页面 -->
+<view class="container">
+  <!-- 顶部用户信息区域 -->
+  <view class="header">
+    <view class="avatar-wrapper" wx:if="{{isLogin}}" bindtap="chooseAvatar">
+      <image class="avatar" src="{{userInfo.avatarUrl || '/images/default-avatar.png'}}"></image>
+      <view class="avatar-edit">
+        <text class="edit-text">点击更换头像</text>
+      </view>
+      <text class="nickname">{{userInfo.username || '用户'}}</text>
+    </view>
+    <!-- 未登录状态只显示登录按钮 -->
+    <view class="login-wrapper" wx:else>
+      <button class="login-btn" bindtap="showLoginModal">登录 / 注册</button>
+    </view>
+  </view>
+
+  <!-- 菜单列表，仅登录后显示 -->
+  <view class="menu-list" wx:if="{{isLogin}}">
+    <!-- 修改密码选项 -->
+    <view class="menu-item" bindtap="changePassword">
+      <view class="menu-item-left">
+        <image class="menu-icon" src="/images/password.png" mode="aspectFit"></image>
+        <text>修改密码</text>
+      </view>
+      <view class="menu-item-right">
+        <text class="arrow">></text>
+      </view>
+    </view>
+    <!-- 退出登录选项 -->
+    <view class="menu-item logout" bindtap="logout">
+      <view class="menu-item-left">
+        <image class="menu-icon" src="/images/logout.png" mode="aspectFit"></image>
+        <text>退出登录</text>
+      </view>
+      <view class="menu-item-right">
+        <text class="arrow">></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 登录/注册弹窗 -->
+  <view class="modal-mask" wx:if="{{showLoginModal}}">
+    <view class="modal-container">
+      <view class="modal-content">
+        <!-- 弹窗标题 -->
+        <view class="modal-header">
+          <text class="modal-title">{{isRegistering ? '注册' : '登录'}}</text>
+          <text class="close" bindtap="closeLoginModal">×</text>
+        </view>
+        <!-- 输入表单 -->
+        <view class="modal-body">
+          <input class="input" placeholder="用户名" value="{{username}}" bindinput="onUsernameInput"/>
+          <input class="input" placeholder="密码" password="true" value="{{password}}" bindinput="onPasswordInput"/>
+          <!-- 注册时显示确认密码输入框 -->
+          <input class="input" placeholder="确认密码" password="true" value="{{confirmPassword}}" 
+            bindinput="onConfirmPasswordInput" wx:if="{{isRegistering}}"/>
+        </view>
+        <!-- 操作按钮 -->
+        <view class="modal-footer">
+          <button class="submit-btn" bindtap="submitLogin">{{isRegistering ? '注册' : '登录'}}</button>
+          <view class="switch-text" bindtap="switchLoginType">
+            {{isRegistering ? '已有账号？去登录' : '没有账号？去注册'}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 修改密码弹窗 -->
+  <view class="modal-mask" wx:if="{{showChangePasswordModal}}">
+    <view class="modal-container">
+      <view class="modal-content">
+        <!-- 弹窗标题 -->
+        <view class="modal-header">
+          <text class="modal-title">修改密码</text>
+          <text class="close" bindtap="closeChangePasswordModal">×</text>
+        </view>
+        <!-- 密码修改表单 -->
+        <view class="modal-body">
+          <input class="input" placeholder="请输入旧密码" password="true" value="{{oldPassword}}" bindinput="onOldPasswordInput"/>
+          <input class="input" placeholder="请输入新密码" password="true" value="{{newPassword}}" bindinput="onNewPasswordInput"/>
+          <input class="input" placeholder="请确认新密码" password="true" value="{{confirmNewPassword}}" bindinput="onConfirmNewPasswordInput"/>
+        </view>
+        <!-- 确认按钮 -->
+        <view class="modal-footer">
+          <button class="submit-btn" bindtap="confirmChangePassword">确认修改</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 在页面底部添加隐藏的canvas -->
+  <canvas type="2d" id="avatarCanvas" style="position: fixed; left: -9999px; visibility: hidden; width: 400px; height: 400px;"></canvas>
+</view>

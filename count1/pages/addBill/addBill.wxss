@@ -1,0 +1,262 @@
+/* 页面容器 */
+.page-container {
+  min-height: 100vh;
+  background: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+
+/* 内容容器 */
+.content-container {
+  width: 92%;
+  max-width: 800rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+/* 金额输入区域 */
+.amount-section {
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.amount-label {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  margin-bottom: 20rpx;
+}
+
+.amount-input-wrapper {
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid var(--background-color);
+  padding: 20rpx 0;
+}
+
+.currency {
+  font-size: 48rpx;
+  color: var(--text-primary);
+  margin-right: 20rpx;
+  font-weight: 500;
+}
+
+.amount-input {
+  flex: 1;
+  font-size: 48rpx;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* 通用区块样式 */
+.section {
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 30rpx;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding: 0;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* 标签网格 */
+.tags-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+  padding: 10rpx 0;
+}
+
+.tag-item {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-color);
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.tag-item.selected {
+  background: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+
+/* 优化智能识别按钮样式 */
+.auto-tag {
+  display: flex;
+  align-items: center;
+  min-width: 220rpx;
+  margin-right: -12rpx;
+}
+
+.auto-tag-content {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 12rpx 20rpx;
+  background: var(--background-color);
+  border-radius: 32rpx;
+  transition: all 0.3s;
+  position: relative;
+  white-space: nowrap;
+  min-width: 180rpx;
+}
+
+.auto-tag-content.enabled {
+  background: rgba(0, 122, 255, 0.1);
+  padding-right: 120rpx;
+}
+
+.auto-tag-icon {
+  width: 28rpx;
+  height: 28rpx;
+  flex-shrink: 0;
+  margin-left: 0;
+}
+
+.auto-tag-content text {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 32rpx;
+  padding: 0;
+}
+
+.auto-tag-content.enabled text {
+  color: var(--primary-color);
+}
+
+.auto-tag-status {
+  position: absolute;
+  right: 16rpx;
+  font-size: 20rpx;
+  color: var(--primary-color);
+  background: rgba(0, 122, 255, 0.1);
+  padding: 4rpx 12rpx;
+  border-radius: 16rpx;
+  opacity: 0;
+  transform: translateX(10rpx);
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.auto-tag-content.enabled .auto-tag-status {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 输入行样式 */
+.input-row {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+}
+
+.input-label {
+  width: 120rpx;
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+.picker-value {
+  flex: 1;
+  font-size: 32rpx;
+  color: var(--text-primary);
+}
+
+.note-input {
+  flex: 1;
+  font-size: 32rpx;
+  color: var(--text-primary);
+}
+
+.placeholder {
+  color: var(--text-tertiary);
+}
+
+.divider {
+  height: 1rpx;
+  background: var(--background-color);
+  margin: 0 -30rpx;
+}
+
+/* 提交按钮 */
+.submit-btn {
+  position: fixed;
+  bottom: calc(40rpx + var(--safe-area-inset-bottom));
+  left: 40rpx;
+  right: 40rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 16rpx rgba(0, 122, 255, 0.3);
+  transition: transform 0.2s;
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* 优化备注输入区域样式 */
+.note-section {
+  padding: 24rpx 0;
+}
+
+.note-wrapper {
+  margin-top: 20rpx;
+  background: var(--background-color);
+  border-radius: 16rpx;
+  padding: 20rpx;
+  position: relative;
+  min-height: 200rpx;
+}
+
+.note-input {
+  width: 100%;
+  min-height: 160rpx;
+  font-size: 32rpx;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.placeholder {
+  color: var(--text-tertiary);
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+.note-counter {
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  font-size: 24rpx;
+  color: var(--text-tertiary);
+  background: var(--card-background);
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+} 

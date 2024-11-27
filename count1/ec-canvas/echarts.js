@@ -1,0 +1,1 @@
+// 从 echarts-for-weixin-2.0.0/ec-canvas/echarts.js 复制内容到这里 

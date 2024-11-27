@@ -1,0 +1,85 @@
+/**app.wxss**/
+page {
+  /* 全局样式变量定义 */
+  --primary-color: #007AFF;    /* 主色调：蓝色 */
+  --secondary-color: #5856D6;  /* 次要色调：紫色 */
+  --success-color: #34C759;    /* 成功色：绿色 */
+  --warning-color: #FF9500;    /* 警告色：橙色 */
+  --danger-color: #FF3B30;     /* 危险色：红色 */
+  
+  /* 背景和卡片颜色 */
+  --background-color: #F2F2F7;  /* 背景色：浅灰色 */
+  --card-background: #FFFFFF;   /* 卡片背景：白色 */
+  
+  /* 文字颜色 */
+  --text-primary: #000000;     /* 主要文字：黑色 */
+  --text-secondary: #6E6E73;   /* 次要文字：深灰色 */
+  --text-tertiary: #98989D;    /* 第三级文字：中灰色 */
+  
+  /* 其他样式变量 */
+  --border-radius: 12px;       /* 圆角大小 */
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);  /* 底部安全区域 */
+  
+  /* 全局背景色和字体设置 */
+  background-color: var(--background-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--text-primary);
+}
+
+.container {
+  /* 容器基础样式 */
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0;
+  background: var(--background-color);
+}
+
+.card {
+  /* 卡片基础样式 */
+  background: var(--card-background);
+  border-radius: var(--border-radius);
+  margin: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  /* 标题样式 */
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  /* 副标题样式 */
+  font-size: 17px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.button {
+  /* 按钮基础样式 */
+  background: var(--primary-color);
+  color: white;
+  border-radius: 22px;
+  padding: 12px 24px;
+  font-size: 17px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.button:active {
+  /* 按钮点击效果 */
+  opacity: 0.8;
+}
+
+.button.secondary {
+  /* 次要按钮样式 */
+  background: var(--secondary-color);
+}
+
+.button.danger {
+  /* 危险按钮样式 */
+  background: var(--danger-color);
+} 

@@ -1,0 +1,32 @@
+<!--pages/statistics/statistics.wxml-->
+<view class="container">
+  <view class="time-selector">
+    <picker mode="selector" range="{{timeRanges}}" value="{{timeRangeIndex}}" bindchange="onTimeRangeChange">
+      <view class="picker">
+        {{timeRanges[timeRangeIndex]}}
+        <text class="arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="total-card">
+    <view class="label">总支出</view>
+    <view class="amount">¥{{totalAmount}}</view>
+  </view>
+
+  <view class="charts-container">
+    <view class="chart-card">
+      <view class="chart-title">支出趋势</view>
+      <view class="chart-wrapper">
+        <canvas type="2d" id="trend-chart" class="chart-canvas" style="width: 100%; height: 100%;"></canvas>
+      </view>
+    </view>
+
+    <view class="chart-card">
+      <view class="chart-title">支出构成</view>
+      <view class="chart-wrapper">
+        <canvas type="2d" id="composition-chart" class="chart-canvas" style="width: 100%; height: 100%;"></canvas>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,63 @@
+<view class="page-container">
+  <!-- 内容容器 -->
+  <view class="content-container">
+    <!-- 头部区域 -->
+    <view class="header">
+      <view class="month-selector">
+        <text class="arrow-btn" bindtap="prevMonth">◀</text>
+        <text class="month-text">{{currentYear}}年{{currentMonth}}月</text>
+        <text class="arrow-btn" bindtap="nextMonth">▶</text>
+      </view>
+      <view class="month-summary">
+        <view class="summary-label">本月支出</view>
+        <view class="amount">¥{{monthlyTotal}}</view>
+      </view>
+    </view>
+
+    <!-- 账单列表区域 -->
+    <scroll-view class="bill-list" scroll-y="true">
+      <movable-area class="bill-area" wx:for="{{bills}}" wx:key="_id">
+        <movable-view class="bill-movable" 
+          direction="horizontal" 
+          out-of-bounds="true"
+          x="{{item.x}}" 
+          damping="0.5"
+          friction="0"
+          inertia="true"
+          rebounce="false"
+          disabled="{{item.disabled}}"
+          bindlongpress="showDeleteConfirm"
+          data-id="{{item._id}}"
+          data-index="{{index}}">
+          <view class="bill-item">
+            <view class="bill-info">
+              <view class="bill-main">
+                <view class="tag">{{item.tag}}</view>
+                <view class="note">{{item.note}}</view>
+              </view>
+              <view class="bill-sub">
+                <view class="date">{{item.dateStr}}</view>
+                <view class="amount">¥{{item.amount}}</view>
+              </view>
+            </view>
+          </view>
+        </movable-view>
+      </movable-area>
+    </scroll-view>
+
+    <!-- 添加按钮 -->
+    <view class="add-btn" bindtap="navigateToAdd">+</view>
+  </view>
+
+  <!-- 删除确认弹窗 -->
+  <view class="delete-modal" wx:if="{{showDeleteModal}}">
+    <view class="delete-modal-content">
+      <view class="delete-modal-title">确认删除</view>
+      <view class="delete-modal-text">确定要删除这条账单记录吗？</view>
+      <view class="delete-modal-buttons">
+        <button class="cancel-btn" bindtap="cancelDelete">取消</button>
+        <button class="confirm-btn" bindtap="confirmDelete">确定</button>
+      </view>
+    </view>
+  </view>
+</view> 
